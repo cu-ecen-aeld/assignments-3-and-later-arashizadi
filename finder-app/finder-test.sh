@@ -50,9 +50,9 @@ then
 	fi
 fi
 
-echo "Rebuilding native writer application"
-make -C "$FINDER_DIR" clean
-make -C "$FINDER_DIR"
+#echo "Rebuilding native writer application"
+#make -C "$FINDER_DIR" clean
+#make -C "$FINDER_DIR"
 
 for i in $(seq 1 $NUMFILES)
 do
