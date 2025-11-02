@@ -1,3 +1,3 @@
 Using built-in specs.
 COLLECT_GCC=aarch64-none-linux-gnu-cpp
-/mnt/c/Users/arash/repos/assignment-2-arashizadi/arm-gnu-toolchain-13.3.rel1-x86_64-aarch64-none-linux-gnu/bin/../aarch64-none-linux-gnu/libc
+/mnt/c/Users/arash/repos/assignments-3-and-later-arashizadi/arm-gnu-toolchain-13.3.rel1-x86_64-aarch64-none-linux-gnu/bin/../aarch64-none-linux-gnu/libc

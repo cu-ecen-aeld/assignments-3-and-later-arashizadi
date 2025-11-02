@@ -2,9 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.0/.schema/devbox.schema.json",
   "env": {
     "ARM_GNU_TOOLCHAIN_VER": "arm-gnu-toolchain-13.3.rel1-x86_64-aarch64-none-linux-gnu",
-    "PATH": "$PATH:/nix/store/5i9wqcy57a4x03f1mvdpaxw8fhhl79dh-python3-3.8.12/bin/:$DEVBOX_PROJECT_ROOT/arm-gnu-toolchain-13.3.rel1-x86_64-aarch64-none-linux-gnu/bin",
-    "PYTHONHOME": "/nix/store/5i9wqcy57a4x03f1mvdpaxw8fhhl79dh-python3-3.8.12/",
-    "PYTHONPATH": "/nix/store/5i9wqcy57a4x03f1mvdpaxw8fhhl79dh-python3-3.8.12/lib/python3.8"
+    "PATH": "$PATH:/nix/store/x0yzsy3pk7qvvw1x6igaifqr1434isqk-python3-3.8.12/bin/:$DEVBOX_PROJECT_ROOT/arm-gnu-toolchain-13.3.rel1-x86_64-aarch64-none-linux-gnu/bin",
+    "PYTHONHOME": "/nix/store/x0yzsy3pk7qvvw1x6igaifqr1434isqk-python3-3.8.12/",
+    "PYTHONPATH": "/nix/store/x0yzsy3pk7qvvw1x6igaifqr1434isqk-python3-3.8.12/lib/python3.8"
   },
   "packages": [
     "cmake@3.31.7",
@@ -27,6 +27,14 @@
         "echo '\n\n2) Setup Python References:\n'",
         "whereis python | grep /nix/store",
         "echo '\nSetup is completed! Next step: update PATH, PYTHONHOME, and PYTHONPATH env vars in devbox.json file to point to the shown installed python path (not the one with appended `-profile`), then exit and re-enter `devbox shell`.'"
+      ],
+      "assignment-merge": [
+        "git remote remove origin",
+        "git remote add origin https://github.com/cu-ecen-aeld/assignments-3-and-later-arashizadi.git",
+        "git remote add assignments-base https://github.com/cu-ecen-aeld/aesd-assignments.git",
+        "git fetch assignments-base",
+        "git merge assignments-base/assignment3-part-1",
+        "git submodule update --init --recursive"
       ]
     }
   }
