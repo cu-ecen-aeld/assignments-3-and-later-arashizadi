@@ -34,6 +34,8 @@
         "git remote add assignments-base https://github.com/cu-ecen-aeld/aesd-assignments.git",
         "git fetch assignments-base",
         "git merge assignments-base/assignment3-part-1",
+        "git submodule update --init --recursive",
+        "git merge assignments-base/assignment3-part-2",
         "git submodule update --init --recursive"
       ]
     }
