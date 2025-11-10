@@ -4,13 +4,31 @@
     "ARM_GNU_TOOLCHAIN_VER": "arm-gnu-toolchain-13.3.rel1-x86_64-aarch64-none-linux-gnu",
     "PATH": "$PATH:/nix/store/x0yzsy3pk7qvvw1x6igaifqr1434isqk-python3-3.8.12/bin/:$DEVBOX_PROJECT_ROOT/arm-gnu-toolchain-13.3.rel1-x86_64-aarch64-none-linux-gnu/bin",
     "PYTHONHOME": "/nix/store/x0yzsy3pk7qvvw1x6igaifqr1434isqk-python3-3.8.12/",
-    "PYTHONPATH": "/nix/store/x0yzsy3pk7qvvw1x6igaifqr1434isqk-python3-3.8.12/lib/python3.8"
+    "PYTHONPATH": "/nix/store/x0yzsy3pk7qvvw1x6igaifqr1434isqk-python3-3.8.12/lib/python3.8",
+    "HOSTCFLAGS": "$HOSTCFLAGS -I/nix/store/4vm27ldxmphlgyj3vf1h7dlgvj5hvj0w-openssl-3.6.0-dev/include",
+    "HOSTLDFLAGS": "$HOSTLDFLAGS -L/nix/store/llswcygvgv9x2sa3z6j7i0g5iqqmn5gn-openssl-3.6.0/lib -lssl -lcrypto"
   },
   "packages": [
+    "autoconf@latest",
+    "automake@latest",
+    "bison@latest",
+    "busybox@1.33.1",
     "cmake@3.31.7",
-    "ruby@latest",
+    "fontforge@latest",
+    "gnumake@latest",
+    "libiconv@latest",
+    "libtool@latest",
+    "makeWrapper@latest",
+    "openssl@latest",
+    "psmisc@latest",
     "python@3.8.18",
-    "python38Packages.pipx@latest"
+    "python38Packages.pipx@latest",
+    "qemu@latest",
+    "ruby@latest",
+    "rustls-libssl@latest",
+    "valgrind-light@latest",
+    "pkgs.openssl.dev",
+    "pkgs.pkg-config"
   ],
   "shell": {
     "init_hook": [
@@ -24,9 +42,12 @@
         "echo 'Un-taring and remove archive'",
         "tar -xJf $ARM_GNU_TOOLCHAIN_VER.tar.xz",
         "rm $ARM_GNU_TOOLCHAIN_VER.tar.xz",
-        "echo '\n\n2) Setup Python References:\n'",
-        "whereis python | grep /nix/store",
-        "echo '\nSetup is completed! Next step: update PATH, PYTHONHOME, and PYTHONPATH env vars in devbox.json file to point to the shown installed python path (not the one with appended `-profile`), then exit and re-enter `devbox shell`.'"
+        "echo '\n\n2) Setup Environment Variables References:\n'",
+        "echo 'openssl:'",
+        "echo 'Update OPENSSL_CFLAGS and OPENSSL_LIBS using the following openssl kernel build flags:",
+        "echo 'python:'",
+        "whereis python | grep '/nix/store'",
+        "echo '\nSetup is completed! Next step: update PATH, PYTHONHOME, and PYTHONPATH env vars in devbox.json file to point to the shown installed python path and not the one with appended `-profile`, then exit and re-enter `devbox shell`.'"
       ],
       "assignment-merge": [
         "git remote remove origin",
