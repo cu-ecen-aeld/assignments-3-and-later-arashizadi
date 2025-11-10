@@ -7,9 +7,15 @@ set -eu
 NUMFILES=10
 WRITESTR=AELD_IS_FUN
 WRITEDIR=/tmp/aeld-data
-PROJ_DIR=$(git rev-parse --show-toplevel)
-FINDER_DIR="$PROJ_DIR/finder-app"
-username=$(cat conf/username.txt)
+SCRIPT_DIR=$(realpath "$(dirname "$0")")
+if PROJ_DIR=$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel 2>/dev/null); then
+    :
+else
+    PROJ_DIR=$(realpath "$SCRIPT_DIR/..")
+fi
+FINDER_DIR=${FINDER_DIR:-$SCRIPT_DIR}
+CONF_DIR="$FINDER_DIR/conf"
+username=$(cat "$CONF_DIR/username.txt")
 
 if [ $# -lt 3 ]
 then
@@ -33,7 +39,7 @@ echo "Writing ${NUMFILES} files containing string ${WRITESTR} to ${WRITEDIR}"
 rm -rf "${WRITEDIR}"
 
 # create $WRITEDIR if not assignment1
-assignment=`cat $PROJ_DIR/conf/assignment.txt`
+assignment=$(cat "$CONF_DIR/assignment.txt")
 
 if [ $assignment != 'assignment1' ]
 then
